@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	// Activate tooltip
+
 	
 	AjaxJSON();
 
@@ -7,32 +7,7 @@ $(document).ready(function(){
 		insertRegistro();
 			
 	});
-	/*
-	
-
-	$(document).on('click','delete', function(e) {
-        e.preventDefault();
-		
-        var parent = $(this).attr('id');
-        alert("presionaste"+parent)
- 
-        var dataString = 'DNI='+parent;
- 
-        $.ajax({
-            type: "POST",
-            url: "../../assets/php/delete.php",
-            data: dataString,
-            success: function(response) {			
-                $('.alert-success').empty();
-                $('.alert-success').append(response).fadeIn("slow");
-                $('#'+parent).fadeOut("slow");
-            }
-        });
-                    
-}); */
-
-
-           
+	   
 });
 
 function AjaxJSON(){
@@ -59,10 +34,10 @@ function AjaxJSON(){
 					"<td align='left'>" + fecnac + "</td>" +
 					"<td align='left'>" + dir + "</td>" +
 					"<td align='left'>" + tfno + "</td>" +
-					"<td><form action='../../assets/php/delete.php' method='post'>"+
-					"<a href='#editEmployeeModal' id='"+dni+"' data='"+dni+"' class='btn edit'  data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>"+
-					"<button  id='"+(dni)+"' name='dni' value='"+dni+"' class='btn delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE872;</i></button>"
-					+"</form></td>"
+					"<td><form action='../../assets/php/update.php' method='post'>"+
+					"<button id='"+dni+"' data='"+dni+"' name='dni'"+"value='"+dni+ "'class='btn edit'  data-toggle='modal'><i class='material-icons' title='Edit'>&#xE254;</i></button></form>"+
+					"<form action='../../assets/php/delete.php' method='post'><button  id='"+(dni)+"' name='dni' value='"+dni+"' class='btn delete'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE872;</i></button>"
+					+"</form></td>"+
 					"</tr>";
 					
 

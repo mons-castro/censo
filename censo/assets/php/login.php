@@ -1,27 +1,29 @@
 <?php
 include "conexion.php";
 
-  $user=$_POST["username"];
-  $pass=$_POST["pass"];
-/*MOSTRAR LA INFORMACION DE TODAS LAS PERSONAS DEL CENSO*/
-$select_from="SELECT USERTYPE from info_persona WHEN USERNAME='$user' AND PASSWORD='$pass'";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  $myusername = $_POST['username'];
+  $mypassword = $_POST['password'];
 
-$result = mysqli_query($conn,$select_from);
-$resp=array();
-if($result){
-    $resp["respuesta_select"]=true;
-    }else{
-    $resp["respuesta_select"]=false;
-    } 
+  $query=$db->prepare( "SELECT USERTYPE FROM usuario WHERE USERNAME = '$myusername' and PASSWORD = '$mypassword';");
+  $query->execute();
+  $result=$query->fetchAll();
+  $result=count($result);
 
-    while ( $row = $result->fetch_assoc())  {
-    
-        $resp["registros"] = $row;
-     }
-    //Convert data in JSON format
-    
-    echo json_encode($resp);
-
+  //$rol = $row['USERTYPE'];
+ 
+    // If result matched $myusername and $mypassword, table row must be 1 row
+  
+    if($result == 1) {
+      #session_register("myusername");
+      //$_SESSION['login_user'] = $myusername;
+      
+      header("location:../../views/admin/consultas.html");
+      
+   }else {
+      $error = "Tu usuario o contraseña no es válida";
+   }
+}
 
     
 

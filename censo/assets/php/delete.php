@@ -20,5 +20,4 @@ $data = $query->fetchAll();
         echo json_encode($delete);
 
 
-    
 ?>
