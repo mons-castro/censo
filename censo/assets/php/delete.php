@@ -16,6 +16,7 @@ $data = $query->fetchAll();
             $delete["respuesta_delete"]=false;
             } 
             header("location:../../views/admin/consultas.html");
+            echo "Se elimino registro";
         
         echo json_encode($delete);
 

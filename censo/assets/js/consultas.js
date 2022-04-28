@@ -59,7 +59,8 @@ function insertRegistro(){
         success: function(insert)
             {                                                               
                   if(insert.respuesta_insert==true){
-					("#newPerson").hide();
+					  window.location.assign("../../views/admin/consultas.html")
+					
 			
 						
 				}
